@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Audio.h"
 #include "DirectXCommon.h"
 #include "Input.h"
@@ -9,28 +8,26 @@
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 #include <memory>
-#include "Player.h"
 
-/// <summary>
-/// ゲームシーン
-/// </summary>
-class GameScene {
-
+class Player {
 public: // メンバ関数
+
 	/// <summary>
 	/// コンストクラタ
 	/// </summary>
-	GameScene();
+	Player();
 
 	/// <summary>
 	/// デストラクタ
 	/// </summary>
-	~GameScene();
+	~Player();
 
 	/// <summary>
 	/// 初期化
 	/// </summary>
-	void Initialize();
+	/// <param name="model">モデル</param>
+	/// <param name="tex">テクスチャ</param>
+	void Initialize(Model* model, uint32_t tex);
 
 	/// <summary>
 	/// 毎フレーム処理
@@ -40,17 +37,14 @@ public: // メンバ関数
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw();
+	void Draw(ViewProjection& viewProjection);
 
 private: // メンバ変数
-	DirectXCommon* dxCommon_ = nullptr;
-	Input* input_ = nullptr;
-	Audio* audio_ = nullptr;
 
 	/// <summary>
 	/// ゲームシーン用
 	/// </summary>
-	
+
 	// ワールド座標変換データ
 	WorldTransform worldTransform_;
 	// ビュープロジェクション
@@ -59,7 +53,5 @@ private: // メンバ変数
 	std::unique_ptr<Model> model_ = nullptr;
 	// テクスチャ
 	uint32_t tex_ = 0u;
-	// 自キャラ
-	std::unique_ptr<Player> player_ = nullptr;
-	
+
 };
