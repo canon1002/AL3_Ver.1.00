@@ -37,7 +37,7 @@ public: // メンバ関数
 	/// <summary>
 	/// 描画
 	/// </summary>
-	void Draw(ViewProjection& viewProjection);
+	void Draw(const ViewProjection& viewProjection);
 
 private: // メンバ変数
 

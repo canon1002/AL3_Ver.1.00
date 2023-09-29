@@ -9,7 +9,12 @@
 #include "ViewProjection.h"
 #include "WorldTransform.h"
 #include <memory>
+#include "DebugCamera.h"
+
+// 追加クラス
 #include "Player.h"
+#include "Skydome.h"
+#include "Ground.h"
 
 /// <summary>
 /// ゲームシーン
@@ -59,6 +64,14 @@ private: // メンバ変数
 	std::unique_ptr<Model> model_ = nullptr;
 	// テクスチャ
 	uint32_t tex_ = 0u;
+	
+	// デバッグカメラ
+	std::unique_ptr<DebugCamera> debugCamera_ = nullptr;
+	
+	// 天球
+	std::unique_ptr<Skydome> skydome_ = nullptr;
+	// 地面
+	std::unique_ptr<Ground> ground_ = nullptr;
 	// 自キャラ
 	std::unique_ptr<Player> player_ = nullptr;
 	
