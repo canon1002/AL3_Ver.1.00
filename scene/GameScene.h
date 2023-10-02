@@ -12,9 +12,11 @@
 #include "DebugCamera.h"
 
 // 追加クラス
+#include "InputSystem.h"
 #include "Player.h"
 #include "Skydome.h"
 #include "Ground.h"
+#include "FollowCamera.h"
 
 /// <summary>
 /// ゲームシーン
@@ -50,6 +52,7 @@ public: // メンバ関数
 private: // メンバ変数
 	DirectXCommon* dxCommon_ = nullptr;
 	Input* input_ = nullptr;
+	InputSystem* inputSystem_ = nullptr;
 	Audio* audio_ = nullptr;
 
 	/// <summary>
@@ -67,12 +70,16 @@ private: // メンバ変数
 	
 	// デバッグカメラ
 	std::unique_ptr<DebugCamera> debugCamera_ = nullptr;
-	
+	// デバッグカメラのオンオフ
+	bool isDebugCameraActive_ = false;
+
 	// 天球
 	std::unique_ptr<Skydome> skydome_ = nullptr;
 	// 地面
 	std::unique_ptr<Ground> ground_ = nullptr;
 	// 自キャラ
 	std::unique_ptr<Player> player_ = nullptr;
+	// 追従カメラ
+	std::unique_ptr<FollowCamera> followCamera_ = nullptr;
 	
 };
